@@ -1,0 +1,30 @@
+═══════════════════════════════════════════════════════
+  UPLOAD CHECKLIST - Coming Soon Page
+═══════════════════════════════════════════════════════
+
+FILES TO UPLOAD (upload all to your hosting root directory):
+
+  ☐ index.html       (Main page)
+  ☐ styles.css       (Styling)
+  ☐ script.js        (JavaScript)
+  ☐ logo.png         (Your logo - 1.4 MB)
+  ☐ .htaccess        (Optional - for better performance)
+
+═══════════════════════════════════════════════════════
+
+QUICK UPLOAD STEPS:
+
+1. Connect to your hosting (FTP/cPanel/SSH)
+2. Go to public_html or www directory
+3. Upload all 5 files above
+4. Visit your domain to test
+
+═══════════════════════════════════════════════════════
+
+IMPORTANT:
+- All files must be in the SAME directory
+- index.html must be in the root directory
+- logo.png filename must match exactly (case-sensitive)
+
+═══════════════════════════════════════════════════════
+
