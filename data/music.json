@@ -1,0 +1,13 @@
+[
+  {
+    "slug": "sample-playlist",
+    "title": "Sample Playlist",
+    "description": "A sample music entry. Add albums or playlists from the admin; optional Spotify embed URL.",
+    "artist": null,
+    "spotifyEmbedUrl": null,
+    "coverImage": null,
+    "published": true,
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  }
+]

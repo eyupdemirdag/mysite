@@ -1,0 +1,11 @@
+[
+  {
+    "slug": "hello-world",
+    "title": "Hello World",
+    "description": "First post. Edit or add more from the admin.",
+    "content": "## Hello\n\nThis is a **sample** post with *Markdown* support.\n\n- List item one\n- List item two\n\nYou can write full markdown here.",
+    "published": true,
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  }
+]

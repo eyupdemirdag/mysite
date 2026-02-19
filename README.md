@@ -1,71 +1,49 @@
-# My Travel Blog - Coming Soon Page
+# Personal Website
 
-A professional and modern "Coming Soon" page for your travel blog and photo gallery website.
+A minimal personal site built with **Next.js 14** (App Router), **TypeScript**, and **Tailwind CSS**. It includes public pages for projects, travel, music, blog, and about—plus a protected admin for content management.
 
 ## Features
 
-- ✨ Modern, responsive design
-- 🎨 Beautiful animations and effects
-- 📱 Mobile-friendly layout
-- ⏰ Countdown timer
-- 📧 Email notification form
-- 🔗 Social media links placeholder
-- 🎯 Feature preview cards
+- **Public**: Projects (card grid + detail), Travel (gallery), Music (with optional Spotify embed), Blog (Markdown), About
+- **Admin** (no header link): Login, dashboard, CRUD for all content, image upload, draft/publish
+- **UI**: Responsive, dark mode, clean layout, SEO metadata per page
 
 ## Setup
 
-1. **Add your logo**: Place your logo file as `logo.png` in the root directory. The page will automatically use it.
-
-2. **Customize the launch date**: Edit `script.js` and change the `launchDate` variable to your desired launch date:
-   ```javascript
-   const launchDate = new Date('2024-12-31T23:59:59').getTime();
+1. **Install dependencies**
+   ```bash
+   npm install
    ```
 
-3. **Update social media links**: Edit the social links in `index.html`:
-   ```html
-   <a href="YOUR_INSTAGRAM_URL" class="social-link">Instagram</a>
+2. **Set admin password**
+   Generate a bcrypt hash and add it to `.env.local`:
+   ```bash
+   node -e "require('bcryptjs').hash('YOUR_PASSWORD', 10).then(h => console.log(h))"
+   ```
+   Create `.env.local`:
+   ```
+   ADMIN_PASSWORD_HASH=<paste the hash here>
    ```
 
-4. **Customize colors**: Edit the CSS variables in `styles.css` to match your brand:
-   ```css
-   :root {
-       --primary-color: #2563eb;
-       --secondary-color: #1e40af;
-       --accent-color: #3b82f6;
-   }
+3. **Run dev server**
+   ```bash
+   npm run dev
    ```
+   Open [http://localhost:3000](http://localhost:3000). Admin: [http://localhost:3000/admin](http://localhost:3000/admin).
 
-## File Structure
+## Scripts
 
-```
-mysite/
-├── index.html      # Main HTML file
-├── styles.css      # Styling
-├── script.js       # JavaScript functionality
-├── logo.png        # Your logo (add this)
-└── README.md       # This file
-```
+- `npm run dev` — development
+- `npm run build` — production build
+- `npm run start` — run production server
+- `npm run lint` — ESLint
 
-## How to View
+## Structure
 
-Simply open `index.html` in your web browser, or use a local server:
+- `app/` — App Router pages and layouts
+- `components/` — Header, ThemeToggle, admin forms
+- `lib/` — data layer, auth, types, Markdown
+- `data/` — JSON stores for projects, travel, music, blog (editable via admin)
+- `public/uploads/` — uploaded images (create automatically or add to .gitignore)
 
-```bash
-# Using Python
-python -m http.server 8000
-
-# Using Node.js (if you have http-server installed)
-npx http-server
-```
-
-Then visit `http://localhost:8000` in your browser.
-
-## Next Steps
-
-Once you're ready to build your full website:
-- Create blog post pages
-- Set up photo gallery
-- Add navigation
-- Implement backend for email notifications
-- Connect to a CMS or database
-
+Admin is protected by cookie-based auth; only `/admin/login` is public. Content is stored in `data/*.json`; use the admin to add or edit.

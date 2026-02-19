@@ -1,0 +1,13 @@
+[
+  {
+    "slug": "sample-trip",
+    "title": "Sample Trip",
+    "description": "A short note about a place. Add your own travel entries from the admin.",
+    "location": "Somewhere",
+    "images": [],
+    "date": "2024-01-01",
+    "published": true,
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  }
+]

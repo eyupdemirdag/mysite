@@ -1,0 +1,14 @@
+[
+  {
+    "slug": "sample-project",
+    "title": "Sample Project",
+    "description": "A minimal example project to show the layout. Replace with your own projects via the admin.",
+    "stack": ["Next.js", "TypeScript", "Tailwind"],
+    "images": [],
+    "githubLink": "https://github.com",
+    "liveLink": null,
+    "published": true,
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  }
+]

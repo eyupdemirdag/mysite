@@ -1,1 +1,26 @@
+# dependencies
 node_modules
+.pnp
+.pnp.js
+
+# build
+.next
+out
+build
+dist
+
+# env
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# misc
+.DS_Store
+*.pem
+debug.log
+npm-debug.log*
+
+# uploads (optional: remove if you want to commit uploads)
+public/uploads
