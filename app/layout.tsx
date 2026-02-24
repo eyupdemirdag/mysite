@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
+import { BackToTop } from '@/components/BackToTop';
+import { siteConfig } from '@/lib/data';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
@@ -11,16 +14,19 @@ export const metadata: Metadata = {
   openGraph: { type: 'website' },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const config = siteConfig.get();
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans min-h-screen`}>
-        <Header />
-        <main className="min-h-[calc(100vh-3.5rem)]">{children}</main>
+    <html lang="en" className="dark" suppressHydrationWarning>
+      <body className={`${inter.variable} font-sans min-h-screen flex flex-col`}>
+        <Header config={config.header} />
+        <main className="flex-1">{children}</main>
+        <Footer config={config.footer} />
+        <BackToTop />
       </body>
     </html>
   );

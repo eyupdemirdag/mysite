@@ -41,7 +41,7 @@ A minimal personal site built with **Next.js 14** (App Router), **TypeScript**, 
 ## Structure
 
 - `app/` — App Router pages and layouts
-- `components/` — Header, ThemeToggle, admin forms
+- `components/` — Header, admin forms
 - `lib/` — data layer, auth, types, Markdown
 - `data/` — JSON stores for projects, travel, music, blog (editable via admin)
 - `public/uploads/` — uploaded images (create automatically or add to .gitignore)

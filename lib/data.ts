@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import type { Project, TravelEntry, MusicEntry, BlogPost } from './types';
+import type { Project, TravelEntry, MusicEntry, BlogPost, PageSection, SiteConfig } from './types';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 
@@ -24,10 +24,26 @@ function writeJson<T>(filePath: string, data: T[]) {
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
 }
 
+function readJsonObject<T>(filePath: string): T | null {
+  ensureDir(path.dirname(filePath));
+  if (!fs.existsSync(filePath)) return null;
+  try {
+    return JSON.parse(fs.readFileSync(filePath, 'utf-8')) as T;
+  } catch {
+    return null;
+  }
+}
+
+function writeJsonObject<T>(filePath: string, data: T) {
+  ensureDir(path.dirname(filePath));
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
+}
+
 const projectsPath = path.join(DATA_DIR, 'projects.json');
 const travelPath = path.join(DATA_DIR, 'travel.json');
 const musicPath = path.join(DATA_DIR, 'music.json');
 const blogPath = path.join(DATA_DIR, 'blog.json');
+const pagesDir = path.join(DATA_DIR, 'pages');
 
 export const projects = {
   getAll: (publishedOnly = true): Project[] => {
@@ -71,4 +87,66 @@ export const blog = {
     return readJson<BlogPost>(blogPath).find((b) => b.slug === slug);
   },
   saveAll: (items: BlogPost[]) => writeJson(blogPath, items),
+};
+
+function pageSectionsPath(pageId: string) {
+  return path.join(pagesDir, `${pageId}.json`);
+}
+
+export const pageSections = {
+  get: (pageId: string): PageSection[] => {
+    const raw = readJson<PageSection>(pageSectionsPath(pageId));
+    return raw.sort((a, b) => a.order - b.order);
+  },
+  save: (pageId: string, sections: PageSection[]) => {
+    writeJson(pageSectionsPath(pageId), sections);
+  },
+};
+
+const defaultSiteConfig: SiteConfig = {
+  header: {
+    name: 'Eyup Demirdag',
+    navItems: [
+      { href: '/projects', label: 'Projects' },
+      { href: '/travel', label: 'Travel' },
+      { href: '/music', label: 'Music' },
+      { href: '/blog', label: 'Blog' },
+      { href: '/about', label: 'About' },
+    ],
+  },
+  footer: {
+    socialLinks: [
+      { type: 'mail', href: 'mailto:eyupndemirdag@gmail.com' },
+      { type: 'linkedin', href: 'https://www.linkedin.com/in/eyupndemirdag/' },
+      { type: 'github', href: 'https://github.com/eyupdemirdag' },
+      { type: 'instagram', href: 'https://www.instagram.com/eyupdemirdag/' },
+      { type: 'spotify', href: 'https://open.spotify.com/user/31z43nwy7g66emdprlo4keb462dy?si=1a5347760ed445bb' },
+    ],
+    copyrightName: 'Eyup Demirdag',
+  },
+};
+
+const siteConfigPath = path.join(DATA_DIR, 'site.json');
+
+export const siteConfig = {
+  get: (): SiteConfig => {
+    const raw = readJsonObject<SiteConfig>(siteConfigPath);
+    if (!raw?.header?.navItems?.length) return defaultSiteConfig;
+    return {
+      header: {
+        name: raw.header.name ?? defaultSiteConfig.header.name,
+        navItems: raw.header.navItems,
+        nameSize: raw.header.nameSize,
+        navSize: raw.header.navSize,
+        logoUrl: raw.header.logoUrl,
+      },
+      footer: {
+        socialLinks: raw.footer?.socialLinks?.length ? raw.footer.socialLinks : defaultSiteConfig.footer.socialLinks,
+        copyrightName: raw.footer?.copyrightName ?? defaultSiteConfig.footer.copyrightName,
+        iconSize: raw.footer?.iconSize,
+        copyrightSize: raw.footer?.copyrightSize,
+      },
+    };
+  },
+  save: (config: SiteConfig) => writeJsonObject(siteConfigPath, config),
 };

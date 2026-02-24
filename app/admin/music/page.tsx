@@ -10,7 +10,7 @@ export default function AdminMusicPage() {
         <h1 className="text-2xl font-bold text-[var(--foreground)]">Music</h1>
         <Link
           href="/admin/music/new"
-          className="rounded-lg bg-[var(--accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--accent-hover)]"
+          className="rounded-lg bg-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--background)] hover:bg-[var(--accent-hover)]"
         >
           New entry
         </Link>

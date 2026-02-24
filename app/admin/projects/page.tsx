@@ -13,7 +13,7 @@ export default function AdminProjectsPage() {
         <h1 className="text-2xl font-bold text-[var(--foreground)]">Projects</h1>
         <Link
           href="/admin/projects/new"
-          className="rounded-lg bg-[var(--accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--accent-hover)]"
+          className="rounded-lg bg-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--background)] hover:bg-[var(--accent-hover)]"
         >
           New project
         </Link>

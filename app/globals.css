@@ -2,26 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Palette: black, gray, silver (from logo) */
 :root {
-  --background: #fafafa;
-  --foreground: #0a0a0a;
-  --surface: #ffffff;
-  --surface-hover: #f5f5f5;
-  --border: #e5e5e5;
+  --background: #0a0a0a;
+  --foreground: #f5f5f5;
+  --surface: #141414;
+  --surface-hover: #262626;
+  --border: #404040;
   --muted: #737373;
-  --accent: #2563eb;
-  --accent-hover: #1d4ed8;
+  --accent: #b8b8b8;
+  --accent-hover: #d4d4d4;
 }
 
 .dark {
   --background: #0a0a0a;
-  --foreground: #fafafa;
-  --surface: #171717;
+  --foreground: #f5f5f5;
+  --surface: #141414;
   --surface-hover: #262626;
   --border: #404040;
-  --muted: #a3a3a3;
-  --accent: #3b82f6;
-  --accent-hover: #2563eb;
+  --muted: #737373;
+  --accent: #b8b8b8;
+  --accent-hover: #d4d4d4;
 }
 
 html {
@@ -36,4 +37,114 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* Edit mode: very slow, subtle wiggle */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-0.15deg); }
+  50% { transform: rotate(0.15deg); }
+}
+.wiggle {
+  animation: wiggle 2.5s ease-in-out infinite;
+}
+
+/* Section add/remove animations */
+@keyframes section-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes section-exit {
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+.section-enter {
+  animation: section-enter 0.25s ease-out forwards;
+}
+.section-exit {
+  animation: section-exit 0.2s ease-in forwards;
+}
+
+/* Panel transform: site arayüzü panele dönüşüyor hissi */
+@keyframes panel-frame-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+.animate-panel-frame-in {
+  animation: panel-frame-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes panel-drawer-in {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.animate-panel-drawer-in {
+  animation: panel-drawer-in 0.25s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.edit-zone-hover {
+  @apply rounded-md transition-colors duration-150;
+}
+.edit-zone-hover:hover {
+  background: rgba(184, 184, 184, 0.12);
+}
+.edit-zone-hover:active {
+  background: rgba(184, 184, 184, 0.18);
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out forwards;
+}
+
+/* Drag and drop: source item "lifted" look */
+.drag-source {
+  opacity: 0.85;
+  transform: scale(1.04);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.2s ease,
+              opacity 0.2s ease;
+  cursor: grabbing;
+  z-index: 10;
+}
+
+/* Drop target: subtle slot highlight */
+@keyframes drop-target-pulse {
+  0%, 100% { border-color: rgba(184, 184, 184, 0.25); background: transparent; }
+  50% { border-color: rgba(184, 184, 184, 0.5); background: rgba(184, 184, 184, 0.06); }
+}
+.drag-drop-target {
+  animation: drop-target-pulse 1.2s ease-in-out infinite;
+  border-radius: 0.5rem;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+/* List items smooth reflow */
+.drag-item {
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.2s ease,
+              box-shadow 0.2s ease;
 }

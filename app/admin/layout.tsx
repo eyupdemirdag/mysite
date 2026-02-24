@@ -6,6 +6,8 @@ export const metadata: Metadata = { robots: 'noindex, nofollow' };
 
 const adminNav = [
   { href: '/admin', label: 'Dashboard' },
+  { href: '/admin/customize', label: 'Homepage' },
+  { href: '/admin/site', label: 'Header & Footer' },
   { href: '/admin/projects', label: 'Projects' },
   { href: '/admin/travel', label: 'Travel' },
   { href: '/admin/music', label: 'Music' },
