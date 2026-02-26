@@ -574,16 +574,6 @@ function FooterSocialEditForm({
         </div>
         <div>
           <label className="block text-sm text-muted">Icon image (optional, PNG only)</label>
-          <input
-            type="text"
-            value={iconUrl}
-            onChange={(e) => setIconUrl(e.target.value)}
-            placeholder="PNG URL or upload below"
-            className="mt-1 w-full rounded-lg border border-border bg-[var(--background)] px-3 py-2 text-[var(--foreground)] text-sm"
-          />
-          {iconUrl && !iconUrl.toLowerCase().endsWith('.png') && (
-            <p className="mt-1 text-xs text-amber-600 dark:text-amber-400">Only PNG images are used. Other formats are ignored.</p>
-          )}
           <ImageUpload value={iconUrl ? [iconUrl] : []} onChange={(urls) => setIconUrl(urls[0] ?? '')} multiple={false} accept="image/png" />
         </div>
         <div className="flex flex-wrap gap-2">
@@ -686,16 +676,6 @@ function FooterSocialNewForm({
       </div>
       <div>
         <label className="block text-sm text-muted">Icon image (optional, PNG only)</label>
-        <input
-          type="text"
-          value={iconUrl}
-          onChange={(e) => setIconUrl(e.target.value)}
-          placeholder="PNG URL or upload below"
-          className="mt-1 w-full rounded-lg border border-border bg-[var(--background)] px-3 py-2 text-[var(--foreground)] text-sm"
-        />
-        {iconUrl && !iconUrl.toLowerCase().endsWith('.png') && (
-          <p className="mt-1 text-xs text-amber-600 dark:text-amber-400">Only PNG images are used. Other formats are ignored.</p>
-        )}
         <ImageUpload value={iconUrl ? [iconUrl] : []} onChange={(urls) => setIconUrl(urls[0] ?? '')} multiple={false} accept="image/png" />
       </div>
       <div className="flex gap-2">
