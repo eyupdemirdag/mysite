@@ -38,7 +38,7 @@ export async function clearSession() {
 }
 
 export async function isAdmin(): Promise<boolean> {
-  // Şimdilik şifre kapalı – tekrar açmak için false döndür ve cookie kontrolü yap
+  // Password currently disabled – return false and check cookie to re-enable
   if (process.env.DISABLE_ADMIN_AUTH === 'true') return true;
   const cookieStore = await cookies();
   const session = cookieStore.get(ADMIN_COOKIE);

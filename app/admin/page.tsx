@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { isAdmin } from '@/lib/auth';
-import { FolderGit2, MapPin, Music, FileText, LayoutDashboard, PanelTop } from 'lucide-react';
+import { FolderGit2, MapPin, Music, FileText, LayoutDashboard, PanelTop, FileStack } from 'lucide-react';
 
 export default async function AdminDashboardPage() {
   const admin = await isAdmin();
@@ -10,6 +10,7 @@ export default async function AdminDashboardPage() {
   const links = [
     { href: '/admin/customize', label: 'Customize Homepage', icon: LayoutDashboard },
     { href: '/admin/site', label: 'Header & Footer', icon: PanelTop },
+    { href: '/admin/pages', label: 'Pages', icon: FileStack },
     { href: '/admin/projects', label: 'Projects', icon: FolderGit2 },
     { href: '/admin/travel', label: 'Travel', icon: MapPin },
     { href: '/admin/music', label: 'Music', icon: Music },

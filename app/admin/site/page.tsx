@@ -17,7 +17,7 @@ export default async function AdminSitePage() {
         Header & Footer
       </h1>
       <p className="mt-1 text-muted">
-        Önizlemede alanlara tıklayarak düzenle; site arayüzü burada panele dönüşüyor.
+        Edit by clicking on fields in the preview; the site interface turns into a panel here.
       </p>
       <SiteConfigForm initialConfig={config} />
     </div>

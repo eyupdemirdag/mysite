@@ -1,0 +1,65 @@
+{
+  "header": {
+    "name": "Eyup Demirdag",
+    "navItems": [
+      {
+        "href": "/projects",
+        "label": "Projects"
+      },
+      {
+        "href": "/travel",
+        "label": "Travel"
+      },
+      {
+        "href": "/music",
+        "label": "Music"
+      },
+      {
+        "href": "/blog",
+        "label": "Blog"
+      },
+      {
+        "label": "About",
+        "href": "/about"
+      }
+    ],
+    "nameSize": "md",
+    "navSize": "md",
+    "logoUrl": "/uploads/1772118264293-nevoj4zso1k.png",
+    "headerAlign": "center",
+    "navAlign": "center",
+    "brandOrder": "logo-name"
+  },
+  "footer": {
+    "socialLinks": [
+      {
+        "type": "mail",
+        "href": "mailto:eyupndemirdag@gmail.com"
+      },
+      {
+        "type": "linkedin",
+        "href": "https://www.linkedin.com/in/eyupndemirdag/"
+      },
+      {
+        "type": "github",
+        "href": "https://github.com/eyupdemirdag"
+      },
+      {
+        "type": "instagram",
+        "href": "https://www.instagram.com/eyupdemirdag/"
+      },
+      {
+        "type": "spotify",
+        "href": "https://open.spotify.com/user/31z43nwy7g66emdprlo4keb462dy?si=1a5347760ed445bb",
+        "iconUrl": "/uploads/1772122365194-qdboxmx3wk.png"
+      }
+    ],
+    "copyrightName": "Eyup Demirdag",
+    "iconSize": "md",
+    "copyrightSize": "md",
+    "socialAlign": "center",
+    "copyrightAlign": "center",
+    "footerContentOrder": "social-copyright"
+  },
+  "customPages": []
+}

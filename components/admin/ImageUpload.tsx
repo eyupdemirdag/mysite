@@ -6,9 +6,11 @@ type Props = {
   value: string[];
   onChange: (urls: string[]) => void;
   multiple?: boolean;
+  /** e.g. "image/png" to allow only PNG */
+  accept?: string;
 };
 
-export function ImageUpload({ value, onChange, multiple = true }: Props) {
+export function ImageUpload({ value, onChange, multiple = true, accept = 'image/*' }: Props) {
   const [uploading, setUploading] = useState(false);
 
   async function onFileSelect(e: React.ChangeEvent<HTMLInputElement>) {
@@ -59,7 +61,7 @@ export function ImageUpload({ value, onChange, multiple = true }: Props) {
         {uploading ? 'Uploading…' : 'Add image'}
         <input
           type="file"
-          accept="image/*"
+          accept={accept}
           multiple={multiple}
           onChange={onFileSelect}
           className="hidden"

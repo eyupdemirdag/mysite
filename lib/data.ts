@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import type { Project, TravelEntry, MusicEntry, BlogPost, PageSection, SiteConfig } from './types';
+import type { Project, TravelEntry, MusicEntry, BlogPost, PageSection, SiteConfig, CustomPage } from './types';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 
@@ -130,7 +130,7 @@ const siteConfigPath = path.join(DATA_DIR, 'site.json');
 
 export const siteConfig = {
   get: (): SiteConfig => {
-    const raw = readJsonObject<SiteConfig>(siteConfigPath);
+    const raw = readJsonObject<SiteConfig & { customPages?: { slug: string; title: string }[] }>(siteConfigPath);
     if (!raw?.header?.navItems?.length) return defaultSiteConfig;
     return {
       header: {
@@ -139,13 +139,20 @@ export const siteConfig = {
         nameSize: raw.header.nameSize,
         navSize: raw.header.navSize,
         logoUrl: raw.header.logoUrl,
+        headerAlign: raw.header.headerAlign ?? 'center',
+        navAlign: raw.header.navAlign ?? 'center',
+        brandOrder: raw.header.brandOrder ?? 'logo-name',
       },
       footer: {
         socialLinks: raw.footer?.socialLinks?.length ? raw.footer.socialLinks : defaultSiteConfig.footer.socialLinks,
         copyrightName: raw.footer?.copyrightName ?? defaultSiteConfig.footer.copyrightName,
         iconSize: raw.footer?.iconSize,
         copyrightSize: raw.footer?.copyrightSize,
+        socialAlign: raw.footer?.socialAlign ?? 'center',
+        copyrightAlign: raw.footer?.copyrightAlign ?? 'center',
+        footerContentOrder: raw.footer?.footerContentOrder ?? 'social-copyright',
       },
+      customPages: Array.isArray(raw.customPages) ? raw.customPages : [],
     };
   },
   save: (config: SiteConfig) => writeJsonObject(siteConfigPath, config),

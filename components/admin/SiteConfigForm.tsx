@@ -33,20 +33,21 @@ export function SiteConfigForm({ initialConfig }: { initialConfig: SiteConfig })
   return (
     <div className="mt-8">
       <p className="mb-6 text-sm text-muted">
-        Önizlemede düzenlemek istediğin alana tıkla; panel açılacak. Değişiklikleri siteye yansıtmak için aşağıdaki butona bas.
+        Click the area you want to edit in the preview; the panel will open. Press the button below to apply changes to the site.
       </p>
 
-      {/* Site önizlemesi – panele dönüşüm animasyonu */}
+      {/* Site preview – panel transition animation */}
       <div className="animate-panel-frame-in">
         <EditableSitePreview
           config={config}
           onEdit={handleEdit}
           onReorderNav={(newOrder) => setConfig((c) => ({ ...c, header: { ...c.header, navItems: newOrder } }))}
           onReorderFooter={(newOrder) => setConfig((c) => ({ ...c, footer: { ...c.footer, socialLinks: newOrder } }))}
+          onReorderBrand={(order) => setConfig((c) => ({ ...c, header: { ...c.header, brandOrder: order } }))}
         />
       </div>
 
-      {/* Siteye kaydet + View site */}
+      {/* Save to site + View site */}
       <div className="mt-8 flex flex-wrap items-center gap-4">
         <button
           type="button"
@@ -54,11 +55,11 @@ export function SiteConfigForm({ initialConfig }: { initialConfig: SiteConfig })
           disabled={saving}
           className="rounded-lg bg-[var(--accent)] px-5 py-2.5 text-sm font-medium text-[var(--background)] hover:bg-[var(--accent-hover)] disabled:opacity-50 transition-colors"
         >
-          {saving ? 'Kaydediliyor…' : 'Siteye kaydet'}
+          {saving ? 'Saving…' : 'Save to site'}
         </button>
         {saved && (
           <span className="text-sm text-[var(--accent)]">
-            Kaydedildi.
+            Saved.
           </span>
         )}
         <Link
@@ -67,7 +68,7 @@ export function SiteConfigForm({ initialConfig }: { initialConfig: SiteConfig })
           rel="noopener noreferrer"
           className="text-sm text-muted hover:text-[var(--foreground)] transition-colors"
         >
-          Siteyi aç →
+          Open site →
         </Link>
       </div>
 

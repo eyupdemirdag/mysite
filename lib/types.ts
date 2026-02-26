@@ -84,12 +84,22 @@ export type PageSection =
 
 export type SizeOption = 'sm' | 'md' | 'lg';
 
+export type HeaderAlignOption = 'left' | 'center' | 'right';
+
+export type BrandOrderOption = 'logo-name' | 'name-logo';
+
 export interface HeaderConfig {
   name: string;
   navItems: { href: string; label: string }[];
   nameSize?: SizeOption;
   navSize?: SizeOption;
   logoUrl?: string;
+  /** Logo + name block alignment */
+  headerAlign?: HeaderAlignOption;
+  /** Navigation bar alignment */
+  navAlign?: HeaderAlignOption;
+  /** Order of logo and name in header (drag to swap in admin) */
+  brandOrder?: BrandOrderOption;
 }
 
 export type FooterSocialType = 'mail' | 'linkedin' | 'github' | 'instagram' | 'spotify';
@@ -98,14 +108,28 @@ export type FooterSocialLink =
   | { type: FooterSocialType; href: string; iconUrl?: string }
   | { type: 'custom'; href: string; label: string; iconUrl?: string };
 
+export type FooterContentOrderOption = 'social-copyright' | 'copyright-social';
+
 export interface FooterConfig {
   socialLinks: FooterSocialLink[];
   copyrightName: string;
   iconSize?: SizeOption;
   copyrightSize?: SizeOption;
+  /** Social icons row alignment */
+  socialAlign?: HeaderAlignOption;
+  /** Copyright row alignment */
+  copyrightAlign?: HeaderAlignOption;
+  /** Order of social and copyright when stacked (drag to swap in admin) */
+  footerContentOrder?: FooterContentOrderOption;
+}
+
+export interface CustomPage {
+  slug: string;
+  title: string;
 }
 
 export interface SiteConfig {
   header: HeaderConfig;
   footer: FooterConfig;
+  customPages?: CustomPage[];
 }
