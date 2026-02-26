@@ -1,5 +1,4 @@
 import { redirect } from 'next/navigation';
-import Link from 'next/link';
 import { isAdmin } from '@/lib/auth';
 import { siteConfig } from '@/lib/data';
 import { SiteConfigForm } from '@/components/admin/SiteConfigForm';
@@ -10,10 +9,7 @@ export default async function AdminSitePage() {
   const config = siteConfig.get();
   return (
     <div className="p-8">
-      <Link href="/admin" className="text-sm text-muted hover:text-[var(--foreground)]">
-        ← Dashboard
-      </Link>
-      <h1 className="mt-4 text-2xl font-bold text-[var(--foreground)]">
+      <h1 className="text-2xl font-bold text-[var(--foreground)]">
         Header & Footer
       </h1>
       <p className="mt-1 text-muted">

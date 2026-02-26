@@ -21,9 +21,13 @@ const BUILTIN_PAGES: { path: string; label: string }[] = [
   { path: '/music', label: 'Music' },
 ];
 
-function getSitePages(customPages: { slug: string; title: string }[] = []): { path: string; label: string }[] {
-  const custom = (customPages || []).map((p) => ({ path: `/p/${p.slug}`, label: p.title }));
-  return [...BUILTIN_PAGES, ...custom];
+function getSitePages(
+  customPages: { slug: string; title: string; active?: boolean }[] = [],
+  disabledBuiltinPaths: string[] = []
+): { path: string; label: string }[] {
+  const builtin = BUILTIN_PAGES.filter((p) => !disabledBuiltinPaths.includes(p.path));
+  const custom = (customPages || []).filter((p) => p.active !== false).map((p) => ({ path: `/p/${p.slug}`, label: p.title }));
+  return [...builtin, ...custom];
 }
 
 export function EditPanelDrawer({
@@ -128,7 +132,7 @@ export function EditPanelDrawer({
             {target.type === 'nav' && (
               <NavLinkForm
                 item={config.header.navItems[target.index] ?? { label: '', href: '/' }}
-                sitePages={getSitePages(config.customPages)}
+                sitePages={getSitePages(config.customPages, config.disabledBuiltinPaths ?? [])}
                 onSave={(label, href) => {
                   handleNav(target.index, label, href);
                   onClose();
@@ -155,7 +159,7 @@ export function EditPanelDrawer({
             {target.type === 'nav-new' && (
               <NavLinkForm
                 item={{ label: '', href: '/' }}
-                sitePages={getSitePages(config.customPages)}
+                sitePages={getSitePages(config.customPages, config.disabledBuiltinPaths ?? [])}
                 onSave={(label, href) => {
                   handleNavNew(label, href);
                   onClose();

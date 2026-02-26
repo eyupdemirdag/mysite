@@ -126,10 +126,21 @@ export interface FooterConfig {
 export interface CustomPage {
   slug: string;
   title: string;
+  /** If false, page is hidden from nav and not listed as available. Default true. */
+  active?: boolean;
+}
+
+export interface AboutPageContent {
+  title: string;
+  /** Plain text or markdown-like content for the about body. */
+  body: string;
 }
 
 export interface SiteConfig {
   header: HeaderConfig;
   footer: FooterConfig;
   customPages?: CustomPage[];
+  /** Paths of built-in pages that are disabled (e.g. ['/about']). Disabled pages are hidden from nav. */
+  disabledBuiltinPaths?: string[];
+  aboutPage?: AboutPageContent;
 }

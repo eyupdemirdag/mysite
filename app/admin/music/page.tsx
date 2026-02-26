@@ -1,19 +1,34 @@
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
+import { isAdmin } from '@/lib/auth';
 import { music } from '@/lib/data';
+import type { Metadata } from 'next';
 
-export default function AdminMusicPage() {
+export const metadata = { title: 'Music', robots: 'noindex' as const };
+
+export default async function AdminMusicPage() {
+  const admin = await isAdmin();
+  if (!admin) redirect('/admin/login');
   const items = music.getAll(false);
 
   return (
     <div className="p-8">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold text-[var(--foreground)]">Music</h1>
-        <Link
-          href="/admin/music/new"
-          className="rounded-lg bg-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--background)] hover:bg-[var(--accent-hover)]"
-        >
-          New entry
-        </Link>
+        <div className="flex gap-2">
+          <Link
+            href="/admin/music/customize"
+            className="rounded-lg border border-border px-4 py-2 text-sm font-medium hover:bg-[var(--surface-hover)]"
+          >
+            Customize page
+          </Link>
+          <Link
+            href="/admin/music/new"
+            className="rounded-lg bg-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--background)] hover:bg-[var(--accent-hover)]"
+          >
+            New entry
+          </Link>
+        </div>
       </div>
       <div className="mt-6 overflow-hidden rounded-xl border border-border">
         <table className="w-full text-left text-sm">

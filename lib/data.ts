@@ -153,6 +153,8 @@ export const siteConfig = {
         footerContentOrder: raw.footer?.footerContentOrder ?? 'social-copyright',
       },
       customPages: Array.isArray(raw.customPages) ? raw.customPages : [],
+      disabledBuiltinPaths: Array.isArray(raw.disabledBuiltinPaths) ? raw.disabledBuiltinPaths : [],
+      aboutPage: raw.aboutPage ?? undefined,
     };
   },
   save: (config: SiteConfig) => writeJsonObject(siteConfigPath, config),

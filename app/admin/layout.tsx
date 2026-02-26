@@ -4,10 +4,13 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = { robots: 'noindex, nofollow' };
 
-const adminNav = [
-  { href: '/admin', label: 'Dashboard' },
-  { href: '/admin/customize', label: 'Homepage' },
+const siteNav = [
   { href: '/admin/site', label: 'Header & Footer' },
+] as const;
+
+const pagesNav = [
+  { href: '/admin/customize', label: 'Home' },
+  { href: '/admin/about', label: 'About' },
   { href: '/admin/projects', label: 'Projects' },
   { href: '/admin/travel', label: 'Travel' },
   { href: '/admin/music', label: 'Music' },
@@ -29,19 +32,39 @@ export default async function AdminLayout({
       <aside className="fixed left-0 top-0 z-40 h-screen w-56 border-r border-border bg-[var(--surface)]">
         <div className="flex h-14 items-center border-b border-border px-4">
           <Link href="/admin" className="font-semibold text-[var(--foreground)]">
-            Admin
+            Dashboard
           </Link>
         </div>
-        <nav className="p-2">
-          {adminNav.map(({ href, label }) => (
+        <nav className="flex flex-col gap-4 p-2">
+          <div>
+            <p className="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-muted/80">Site settings</p>
+            {siteNav.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className="block rounded-md px-3 py-2 text-sm font-medium text-muted hover:bg-surface-hover hover:text-[var(--foreground)]"
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
+          <div>
             <Link
-              key={href}
-              href={href}
-              className="block rounded-md px-3 py-2 text-sm font-medium text-muted hover:bg-surface-hover hover:text-[var(--foreground)]"
+              href="/admin/pages"
+              className="block rounded-md px-3 py-1 text-xs font-semibold uppercase tracking-wider text-muted/80 hover:bg-surface-hover hover:text-[var(--foreground)]"
             >
-              {label}
+              Pages
             </Link>
-          ))}
+            {pagesNav.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className="block rounded-md px-3 py-2 text-sm font-medium text-muted hover:bg-surface-hover hover:text-[var(--foreground)]"
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
         </nav>
         <div className="absolute bottom-0 left-0 right-0 border-t border-border p-2">
           <Link

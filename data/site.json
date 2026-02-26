@@ -61,5 +61,6 @@
     "copyrightAlign": "center",
     "footerContentOrder": "social-copyright"
   },
-  "customPages": []
+  "customPages": [],
+  "disabledBuiltinPaths": []
 }

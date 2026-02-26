@@ -1,7 +1,9 @@
 {
-  "/page": "app/page.js",
   "/about/page": "app/about/page.js",
-  "/travel/page": "app/travel/page.js",
-  "/admin/site/page": "app/admin/site/page.js",
-  "/admin/pages/page": "app/admin/pages/page.js"
+  "/admin/pages/page": "app/admin/pages/page.js",
+  "/admin/customize/page": "app/admin/customize/page.js",
+  "/admin/about/page": "app/admin/about/page.js",
+  "/admin/projects/customize/page": "app/admin/projects/customize/page.js",
+  "/admin/music/customize/page": "app/admin/music/customize/page.js",
+  "/admin/site/page": "app/admin/site/page.js"
 }

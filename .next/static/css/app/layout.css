@@ -979,6 +979,12 @@ video {
 .bg-surface-hover {
   background-color: var(--surface-hover);
 }
+.bg-green-500\/20 {
+  background-color: rgb(34 197 94 / 0.2);
+}
+.bg-muted {
+  background-color: var(--muted);
+}
 .object-contain {
   -o-object-fit: contain;
      object-fit: contain;
@@ -1160,6 +1166,9 @@ video {
 }
 .tracking-wide {
   letter-spacing: 0.025em;
+}
+.tracking-wider {
+  letter-spacing: 0.05em;
 }
 .text-\[var\(--accent\)\] {
   color: var(--accent);
@@ -1506,6 +1515,10 @@ body {
 .dark\:text-amber-400:is(.dark *) {
   --tw-text-opacity: 1;
   color: rgb(251 191 36 / var(--tw-text-opacity, 1));
+}
+.dark\:text-green-400:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(74 222 128 / var(--tw-text-opacity, 1));
 }
 .dark\:invert-0:is(.dark *) {
   --tw-invert: invert(0);

@@ -8,7 +8,7 @@ export default async function AdminDashboardPage() {
   if (!admin) redirect('/admin/login');
 
   const links = [
-    { href: '/admin/customize', label: 'Customize Homepage', icon: LayoutDashboard },
+    { href: '/admin/customize', label: 'Home', icon: LayoutDashboard },
     { href: '/admin/site', label: 'Header & Footer', icon: PanelTop },
     { href: '/admin/pages', label: 'Pages', icon: FileStack },
     { href: '/admin/projects', label: 'Projects', icon: FolderGit2 },
