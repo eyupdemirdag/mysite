@@ -4,7 +4,7 @@ import { SectionRenderer } from '@/components/sections';
 
 export const metadata: Metadata = {
   title: 'Projects',
-  description: 'A selection of projects I've worked on.',
+  description: "A selection of projects I've worked on.",
 };
 
 export default function ProjectsPage() {

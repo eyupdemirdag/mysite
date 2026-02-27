@@ -11,6 +11,11 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+    "/projects/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/projects/page.js"
+    ],
     "/about/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -36,85 +41,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/travel/page.js"
     ],
-    "/projects/page": [
+    "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/projects/page.js"
-    ],
-    "/admin/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/admin/page.js"
-    ],
-    "/admin/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/admin/layout.js"
-    ],
-    "/admin/customize/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/admin/customize/page.js"
-    ],
-    "/admin/site/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/admin/site/page.js"
-    ],
-    "/admin/blog/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/admin/blog/page.js"
-    ],
-    "/admin/blog/new/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/admin/blog/new/page.js"
-    ],
-    "/admin/music/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/admin/music/page.js"
-    ],
-    "/admin/travel/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/admin/travel/page.js"
-    ],
-    "/admin/projects/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/admin/projects/page.js"
-    ],
-    "/admin/pages/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/admin/pages/page.js"
-    ],
-    "/admin/pages/new/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/admin/pages/new/page.js"
-    ],
-    "/admin/about/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/admin/about/page.js"
-    ],
-    "/admin/projects/customize/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/admin/projects/customize/page.js"
-    ],
-    "/admin/travel/customize/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/admin/travel/customize/page.js"
-    ],
-    "/admin/music/customize/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/admin/music/customize/page.js"
+      "static/chunks/app/_not-found/page.js"
     ]
   }
 }
